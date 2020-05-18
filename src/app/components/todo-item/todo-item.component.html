@@ -2,8 +2,11 @@
             (mouseover)="isHovered=true"
             (mouseout)="isHovered=false">
     <div class="todo">
-        <input type="checkbox" class="toggle text-center">
-        <label>Todo Item</label>
+        <input type="checkbox"  class="toggle text-center" 
+                                                [ngClass]="{checked: todoItem.isCompleted }"
+                                                (change)="changeTodoStatus()" 
+                                                [checked]="todoItem.isCompleted">
+        <label>{{todoItem.content}}</label>
     </div>
     <div class="d-flex align-items-center">
         <span class="icon-wrapper text-center edit" [ngClass]="{'active': isHovered}">

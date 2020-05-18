@@ -1,6 +1,2 @@
-<app-todo-item></app-todo-item>
-<app-todo-item></app-todo-item>
-<app-todo-item></app-todo-item>
-<app-todo-item></app-todo-item>
-<app-todo-item></app-todo-item>
+<app-todo-item *ngFor="let item of todoList | async" [todoItem]="item"></app-todo-item>
 

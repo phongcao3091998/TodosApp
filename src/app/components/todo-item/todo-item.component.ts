@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Todo } from '../../models/todo.model';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -8,14 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class TodoItemComponent implements OnInit {
   isHovered = false;
   isEditMode = false;
-
-  constructor() { }
+  @Input() todoItem: Todo;
+  constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
   }
 
-  onHover(): void {
-    console.log('Hover Me');
+  changeTodoStatus() {
+    console.log(this.todoItem.id);
+    this.todoService.changeTodoStatus(this.todoItem.id, !this.todoItem.isCompleted);
   }
+
 
 }
