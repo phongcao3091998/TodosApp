@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterButton, Filter } from 'src/app/models/filtering.model';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-footer',
@@ -19,11 +20,16 @@ export class FooterComponent implements OnInit {
     }
   ];
 
-  lenght = 0;
+  lenghtOfTodoListItem = 0;
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
+    this.getLenghtOfListTodoContent();
+  }
+
+  getLenghtOfListTodoContent() {
+    this.todoService.lengthSubject$.subscribe(val => this.lenghtOfTodoListItem = val);
   }
 
 }
