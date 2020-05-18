@@ -22,7 +22,7 @@ export class LocalStorageService {
     if (!value) {
       return;
     }
-    this.storage.setItem(key, JSON.stringify(value));
+    this.storage[key] = JSON.stringify(value);
   }
 
   getObject(key: string): any {

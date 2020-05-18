@@ -44,6 +44,15 @@ export class TodoService {
     this.updateDisplayTodo();
   }
 
+  changeTodoStatus(id: number, isCompleted: boolean) {
+    const index = this.toDos.findIndex(t => t.id = id);
+    const todo = this.toDos[index];
+    todo.isCompleted = isCompleted;
+    this.toDos.splice(index, 1, todo);
+    this.updateToLocal();
+  }
+
+
   private updateDisplayTodo() {
     this.displayTodoJubject.next(this.filteredTodo);
     this.lengthSubject.next(this.toDos.length);
